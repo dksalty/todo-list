@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+</head>
+<body>
+  <div id="content">
+    
+  
+    <nav>
+      
+   <form>
+    <h2>Add a Todo!</h2>
+    <label for="day">When:</label>
+    <select name="day" id="day">
+      <option value="today">Today</option>
+      <option value="tomorrow">Tomorrow</option>
+      <option value="comingUp">Coming Up</option>
+      <option value="anyTime">Anytime</option>
+    </select>
+    <label for="project">Select Project</label>
+    <select name="project" id="project">
+      <option value='personalImprovement'>Personal Improvement</option>
+      <option value='houseWork'>House Work</option>
+      <option value='skills'>Skills</option>
+      <option value='important'>Important</option>
+    </select>
+    <label for='todo'>Add Todo</label>
+    <input type='text' id="todo">
+    <label for="time">Choose a time:</label>
+    <input type="time" id="todayTime" name="todayTime">
+    <button type="submit">+ Add to List</button>
+  </form>
+   
+  </nav>
+   <div class="rightContainer">
+ <header><h1>Todo List</h1></header>
+  <main>
+      <div><h2>Today</h2></div>
+      <div><h2>Tomorrow</h2></div>
+      <div><h2>Coming Up</h2></div>
+      <div><h2>Anytime</h2></div>
+      
+    </main>
+
+  </div>
+  
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+#content {
+display:flex;    
+background-color: rgb(195, 231, 220);
+flex-direction: row;
+min-height: 100vh;
+
+}
+nav {
+background-color: rgb(219, 206, 206);
+width: 200px;
+height: 100vh;
+
+}
+main {
+display: flex;
+flex-direction: row;
+background-color: rgb(229, 222, 207);
+gap: 8px;
+flex: 1;
+justify-content: center;
+}
+
+header {
+display: flex;
+justify-content: center;
+align-items: center;
+ height: 200px;
+}
+body {
+    
+    margin: 0;
+    padding: 0;
+    
+}
+main div {
+display: flex;
+background-color: aliceblue;
+width: 360px;
+justify-content: center;
+
+}
+.rightContainer{
+display: flex;
+flex-direction: column;
+flex:1;
+}
