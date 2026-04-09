@@ -10,26 +10,34 @@
   
     <nav>
       
-   <form>
+   <form id="todoForm">
     <h2>Add a Todo!</h2>
     <label for="day">When:</label>
     <select name="day" id="day">
       <option value="today">Today</option>
       <option value="tomorrow">Tomorrow</option>
       <option value="comingUp">Coming Up</option>
-      <option value="anyTime">Anytime</option>
-    </select>
+      <option value="anytime">Anytime</option>
+    </select><br>
+    <label for="priority">Priority</label>
+    <select name="priority" id="priority">
+      <option value='low'>Low</option>
+      <option value='medium'>Medium</option>
+      <option value='high'>High</option>
+    </select><br>
     <label for="project">Select Project</label>
     <select name="project" id="project">
       <option value='personalImprovement'>Personal Improvement</option>
       <option value='houseWork'>House Work</option>
       <option value='skills'>Skills</option>
       <option value='important'>Important</option>
-    </select>
+    </select><br>
+
+
     <label for='todo'>Add Todo</label>
-    <input type='text' id="todo">
+    <input type='text' id="todo" name="todo">
     <label for="time">Choose a time:</label>
-    <input type="time" id="todayTime" name="todayTime">
+    <input type="time" id="time" name="time">
     <button type="submit">+ Add to List</button>
   </form>
    
