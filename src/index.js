@@ -1,7 +1,7 @@
 console.log('Hello');
 import './styles.css';
-import { TodoArray } from './index2.js';
-import { ScreenController } from './index3.js';
+import { TodoArray } from './TodoArray.js';
+import { ScreenController } from './ScreenController.js';
 
   const todoForm = document.getElementById('todoForm')
 

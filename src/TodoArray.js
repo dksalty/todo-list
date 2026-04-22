@@ -1,13 +1,15 @@
 export function TodoArray () {
   const todoArray = [];
   
+const prioritySelect = document.getElementById('priority');
+const projectSelect = document.getElementById('project');
 
 
 const createNewObject = () => {
   const formObject = {
     day: document.getElementById('day').value,
-    priority: document.getElementById('priority').value,
-    project: document.getElementById('project').value,
+    priority: prioritySelect.options[prioritySelect.selectedIndex].text,
+    project: projectSelect.options[projectSelect.selectedIndex].text,
     description:  document.getElementById('todo').value, 
     time: document.getElementById('time').value
 };

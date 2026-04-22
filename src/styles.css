@@ -15,7 +15,7 @@ width: 220px;
 main {
 display: grid;
 grid-template-columns: repeat(4, 1fr);
-background-color: rgb(241, 233, 224);
+
 flex: 1;
 }
 
@@ -26,7 +26,7 @@ body {
     
     margin: 0;
     padding: 0;
-    
+    background-color: antiquewhite;
 }
 
 .days {
@@ -47,4 +47,8 @@ header {
     background-color: rgb(175, 226, 226);
     text-align: center;
 }
-
+.addedTodo {
+width: auto;
+background-color: rgb(166, 220, 229);
+text-align: center;
+}

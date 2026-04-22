@@ -26,6 +26,8 @@ appendArray.forEach((todo) => {
     const todoInfo = document.createElement('p');
     const timeInfo = document.createElement('p');
     
+
+
     projectTitle.textContent = todo.project;
     priorityLevel.textContent = todo.priority;
     todoInfo.textContent = todo.description;
