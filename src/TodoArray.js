@@ -1,29 +1,39 @@
 export function TodoArray () {
   const todoArray = [];
-  
-const prioritySelect = document.getElementById('priority');
-const projectSelect = document.getElementById('project');
-
-
-const createNewObject = () => {
+   
+const saveToStorage = () => {
+  localStorage.setItem('todos', JSON.stringify(todoArray));
+}
+const loadFromStorage = () => {
+  const storedTodos = localStorage.getItem('todos');
+  if (storedTodos) {
+    todoArray.push(...JSON.parse(storedTodos));
+  }
+};
+loadFromStorage();
+const createNewObject = (todoData) => {
   const formObject = {
-    day: document.getElementById('day').value,
-    priority: prioritySelect.options[prioritySelect.selectedIndex].text,
-    project: projectSelect.options[projectSelect.selectedIndex].text,
-    description:  document.getElementById('todo').value, 
-    time: document.getElementById('time').value
+    id: Date.now(),
+    ...todoData
 };
 todoArray.push(formObject);
+saveToStorage();
 return formObject;
 }
   
+const deleteTodo = (id) => {
+ const filteredtodos = todoArray.filter((obj) => obj.id !== id);
+  todoArray.length = 0;
+  todoArray.push(...filteredtodos);
+  saveToStorage();
+}
 const getArray = () => todoArray;
 
 
 return {
 getArray,
 createNewObject,
-
+deleteTodo
 
 }
 

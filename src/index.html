@@ -11,37 +11,44 @@
     <nav>
       
    <form id="todoForm">
-    <h2>Add a Todo!</h2>
+     <h2>Add a Todo!</h2>
     <hr>
     <label for="day">When</label>
     <input type="date" id="day">
     <hr>
     <label for="priority">Priority</label>
     <select name="priority" id="priority">
-      <option value='low'>Low</option>
-      <option value='medium'>Medium</option>
-      <option value='high'>High</option>
+      <option value="" disabled selected>Select priority</option>
+      <option class="low" value='low'>Low</option>
+      <option class="medium" value='medium'>Medium</option>
+      <option class="high" value='high'>High</option>
     </select>
+    <p id="formError" class="form-error"></p>
     <hr>
     <label for="project">Category</label>
     <select name="project" id="project">
+       <option value="" disabled selected>Select project</option>
       <option value='personalImprovement'>Personal Improvement</option>
       <option value='houseWork'>House Work</option>
       <option value='skills'>Skills</option>
       <option value='important'>Important</option>
     </select>
+    <p id="formError" class="form-error"></p>
+
 <hr>
 
     <label for='todo'>What To Do</label>
     <input type='text' id="todo" name="todo">
+    <p id="formError" class="form-error"></p>
     <hr>
     <label for="time">Choose a time:</label>
     <input type="time" id="time" name="time">
     
-    <button type="submit" id="submitButton">+ Add to List</button>
+    <button type="submit" id="submitButton">+ Add to List +</button>
   </form>
 
-  <div class="overdue">Overdue</div> 
+  
+  
   </nav>
    <div class="rightContainer">
  <header>
@@ -52,6 +59,7 @@
   <h2>Today</h2>
   <h2>Tomorrow</h2>
   <h2>Coming Up</h2>
+  <h2>Later</h2>
   <h2>Anytime</h2>
 </div>
   <main>
@@ -59,10 +67,11 @@
       <div id="today"></div>
       <div id="tomorrow"></div>
       <div id="comingUp"></div>
+      <div id="later"></div>
       <div id="anytime"></div>
       
     </main>
-
+<div class="overdue"><span class="overdue-title">! Overdue !</span><hr><div id="overdue"></div></div>
   </div>
   
 </body>
