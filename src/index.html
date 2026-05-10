@@ -9,6 +9,7 @@
     
   
     <nav>
+      <div class="sortProjects">Sort Projects</div>
       
    <form id="todoForm">
      <h2>Add a Todo!</h2>
@@ -23,9 +24,9 @@
       <option class="medium" value='medium'>Medium</option>
       <option class="high" value='high'>High</option>
     </select>
-    <p id="formError" class="form-error"></p>
+    <p id="priorityError" class="form-error"></p>
     <hr>
-    <label for="project">Category</label>
+    <label for="project">Project</label>
     <select name="project" id="project">
        <option value="" disabled selected>Select project</option>
       <option value='personalImprovement'>Personal Improvement</option>
@@ -33,13 +34,13 @@
       <option value='skills'>Skills</option>
       <option value='important'>Important</option>
     </select>
-    <p id="formError" class="form-error"></p>
+    <p id="projectError" class="form-error"></p>
 
 <hr>
 
     <label for='todo'>What To Do</label>
     <input type='text' id="todo" name="todo">
-    <p id="formError" class="form-error"></p>
+    <p id="descriptionError" class="form-error"></p>
     <hr>
     <label for="time">Choose a time:</label>
     <input type="time" id="time" name="time">
@@ -56,22 +57,29 @@
 
 </header>
   <div class="days">
-  <h2>Today</h2>
-  <h2>Tomorrow</h2>
-  <h2>Coming Up</h2>
-  <h2>Later</h2>
-  <h2>Anytime</h2>
+  <h2 class="day">Today</h2>
+  <h2 class="day">Tomorrow</h2>
+  <h2 class="day">Coming Up</h2>
+  <h2 class="day">Later</h2>
+  <h2 class="day">Anytime</h2>
 </div>
+<div class="verticalContainer">
   <main>
   
-      <div id="today"></div>
-      <div id="tomorrow"></div>
-      <div id="comingUp"></div>
-      <div id="later"></div>
-      <div id="anytime"></div>
+      <div id="today" class="dayArea"></div>
+      <div id="tomorrow" class="dayArea"></div>
+      <div id="comingUp" class="dayArea"></div>
+      <div id="later" class="dayArea"></div>
+      <div id="anytime" class="dayArea"></div>
       
     </main>
-<div class="overdue"><span class="overdue-title">! Overdue !</span><hr><div id="overdue"></div></div>
+<div class="overdue">
+  <span class="overdue-title">! Overdue !</span><hr>
+  <div id="overdue">
+    
+  </div>
+</div>
+</div>
   </div>
   
 </body>

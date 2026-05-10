@@ -28,7 +28,7 @@ appendArray.forEach((todo) => {
     newTodo.classList.add('addedTodo');
     const projectTitle = document.createElement('h2');
     const priorityLevel = document.createElement('p');
-    priorityLevel.classList.add('priority', `priority-${todo.priority.toLowerCase()}`);
+    priorityLevel.textContent = todo.priority;
     const todoInfo = document.createElement('p');
     const timeInfo = document.createElement('p');
     const removeButton = document.createElement('button');
@@ -38,7 +38,14 @@ appendArray.forEach((todo) => {
     const userTime = todo.time;
     const combinedString = `${userDate} ${userTime}`;
     const parsedDate = parse(combinedString, 'yyyy-MM-dd HH:mm', new Date());
-  
+    const markCompleteButton = document.createElement('button');
+    markCompleteButton.classList.add('markCompleteBtnColor');
+    markCompleteButton.textContent = '✓';
+    const markCompleteDiv = document.createElement('div');
+    markCompleteDiv.classList.add('markCompleteColor');
+    markCompleteDiv.textContent = '✓';
+    
+ 
   let standardResult;
     
 if (userDate && userTime) {
@@ -70,7 +77,7 @@ timeInfo.textContent = timeDisplay;
     timeInfo.textContent = standardResult;
     
   
-    newTodo.append(projectTitle, priorityLevel, todoInfo, timeInfo, removeButton);
+    newTodo.append( projectTitle, priorityLevel, todoInfo, timeInfo, removeButton, markCompleteButton);
     
    if (isToday(parsedDate)) {
     todayDiv.appendChild(newTodo)
@@ -88,6 +95,17 @@ timeInfo.textContent = timeDisplay;
     overdueDiv.appendChild(newTodo);
    }
    else laterDiv.appendChild(newTodo);
+
+   markCompleteButton.addEventListener('click', () => {
+      
+   
+
+if (newTodo.contains(markCompleteDiv)) {
+        markCompleteDiv.remove();
+      }
+      else newTodo.append(markCompleteDiv);
+      markCompleteDiv.classList.add('markCompleteColor');
+   });
 
    removeButton.addEventListener('click', () => {
  deleteTodo(todo.id);

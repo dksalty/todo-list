@@ -10,7 +10,9 @@ const getArrayFunction = TodoArray();
 const addNewObject = getArrayFunction.createNewObject;
 const getTodos = getArrayFunction.getArray;
 const deleteTodo = getArrayFunction.deleteTodo;
-const formError = document.getElementById('formError');
+const priorityError = document.getElementById('priorityError');
+const projectError = document.getElementById('projectError');
+const descriptionError = document.getElementById('descriptionError');
 updateScreen();
  
 todoForm.addEventListener('submit', (event) => {
@@ -18,27 +20,57 @@ todoForm.addEventListener('submit', (event) => {
     const dayValue = document.getElementById('day').value;
 const timeValue = document.getElementById('time').value;    
 const descriptionValue = document.getElementById('todo').value;
-const priorityText = prioritySelect.options[prioritySelect.selectedIndex].text;
-const projectText = projectSelect.options[projectSelect.selectedIndex].text;
+const priorityValue = prioritySelect.options[prioritySelect.selectedIndex].value;
+const projectValue = projectSelect.options[projectSelect.selectedIndex].text;
+const descriptionInput = document.getElementById('todo');
+const descriptionError = document.getElementById('descriptionError');
     
     const todoData = {
         day: dayValue,
         time: timeValue,
         description: descriptionValue,
-        priority: priorityText,
-        project: projectText
+        priority: priorityValue,
+        project: projectValue
     };
-  if (
-  !descriptionValue.trim() ||
-  !priorityText ||
-  !projectText
+ 
+ 
+descriptionInput.addEventListener('input', () => {
+  if (descriptionInput.value.trim()) {
+    descriptionError.textContent = '';
+  } 
+});
+prioritySelect.addEventListener('change', () => {
+  if (prioritySelect.value) {
+    priorityError.textContent = '';
+  }
+});
+projectSelect.addEventListener('change', () => {
+  if (projectSelect.value) {
+    projectError.textContent = '';
+  }
+});
+if (
+  !descriptionValue.trim() 
+ 
 ) {
-  formError.textContent = 'Please fill in all required fields.';
-  return;
-  formError.textContent = '';
+  descriptionError.textContent = 'Please add a description.';
+ return;
 }
+if (!priorityValue) {
+  priorityError.textContent = 'Please select a priority.';
+  return;
+}
+if (!projectValue) {
+  projectError.textContent = 'Please select a project.';
+  return;
+}
+descriptionError.textContent = '';
+priorityError.textContent = '';
+projectError.textContent = '';
+
     addNewObject(todoData);
     updateScreen();
+    todoForm.reset();
     console.log(getTodos())
 });
 
