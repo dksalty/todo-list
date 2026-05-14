@@ -43,10 +43,18 @@ appendArray.forEach((todo) => {
     markCompleteButton.textContent = '✓';
     const markCompleteDiv = document.createElement('div');
     markCompleteDiv.classList.add('markCompleteColor');
-    markCompleteDiv.textContent = '✓';
-    
- 
-  let standardResult;
+    markCompleteDiv.textContent = '✓ Completed ✓';
+    const areYouSureButton = document.createElement('button');
+    areYouSureButton.classList.add('areYouSureButton');
+    areYouSureButton.textContent = 'Click here if you are sure you want to remove this todo';
+const priorityCircle = document.createElement('span');
+priorityCircle.classList.add('priority-circle');
+priorityCircle.classList.add(`priority-${todo.priority}`);
+
+projectTitle.appendChild(priorityCircle);
+
+  
+let standardResult;
     
 if (userDate && userTime) {
   const combinedString = `${userDate} ${userTime}`;
@@ -77,7 +85,7 @@ timeInfo.textContent = timeDisplay;
     timeInfo.textContent = standardResult;
     
   
-    newTodo.append( projectTitle, priorityLevel, todoInfo, timeInfo, removeButton, markCompleteButton);
+    newTodo.append( priorityCircle, projectTitle, todoInfo, timeInfo, markCompleteButton, removeButton);
     
    if (isToday(parsedDate)) {
     todayDiv.appendChild(newTodo)
@@ -97,20 +105,26 @@ timeInfo.textContent = timeDisplay;
    else laterDiv.appendChild(newTodo);
 
    markCompleteButton.addEventListener('click', () => {
-      
-   
-
-if (newTodo.contains(markCompleteDiv)) {
+      if (newTodo.contains(markCompleteDiv)) {
         markCompleteDiv.remove();
       }
       else newTodo.append(markCompleteDiv);
       markCompleteDiv.classList.add('markCompleteColor');
    });
 
-   removeButton.addEventListener('click', () => {
- deleteTodo(todo.id);
+removeButton.addEventListener('click', () => {
+  if (!newTodo.contains(areYouSureButton)) {
+    newTodo.appendChild(areYouSureButton);
+
+    setTimeout(() => {
+      areYouSureButton.remove();
+    }, 3000);
+  }
+});
+areYouSureButton.addEventListener('click', () => {
+   deleteTodo(todo.id);
 updateScreen();
-})
+});
 });
 
 }

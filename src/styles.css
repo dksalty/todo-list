@@ -35,11 +35,16 @@ text-align: center;
 .day {
   font-weight: bold;
   font-size: 1.2em;
+ flex-direction: column;
+
  
 }
 .dayArea {
-  border: 2px solid rgb(145, 145, 145);
+  border: 2px solid rgb(226, 216, 216);
   border-left: none;
+  display: flex;
+  flex-direction: column;
+  
 }
 .rightContainer {
   display: flex;
@@ -53,24 +58,29 @@ header {
     text-align: center;
 }
 .addedTodo {
-width: 100%;
-background-color: rgb(166, 220, 229);
+background-color: rgb(220, 228, 230);
 text-align: center;
-border: 2px solid brown;
-border-radius: 10px;
-margin: 3px;
-padding: 3px;
+border: 2px solid rgb(92, 62, 139);
+height: auto;
+width: 90%;
+max-width: 250px;
+font-weight: bold;
+font-size: 20px;
+overflow-wrap: break-word;
+word-break: break-word;
+align-self: center;
 }
 .overdue {
 display: flex;
 width: 100%;
 background-color: antiquewhite;
-align-items: center;
+align-items: flex-start;
 font-size: 10px;
 color: rgb(151, 12, 12);
 border: 2px solid red;
 flex-direction: column;
 margin-top: auto;
+
 }
 form {
 border: 2px solid rgb(145, 145, 145);
@@ -105,21 +115,22 @@ padding: 10px;
 }
 
 .priority-high {
-  color: red;
+  background-color: red;
 }
 
 .priority-medium {
-  color: orange;
+  background-color: orange;
 }
 
 .priority-low {
-  color: green;
+  background-color: green;
 }
 
 .overdue-title {
   color: red;
   font-weight: bold;
   font-size: 30px;
+  align-self: center;
 }
 .form-error {
   color: red;
@@ -146,6 +157,9 @@ padding: 10px;
   display: flex;
   flex-direction: row;
   flex: 1;
+  font-size: 8px;
+  font-weight: bold;
+  height: auto;
 }
 .markCompleteColor {
   color: darkgreen;
@@ -171,4 +185,13 @@ padding: 10px;
   padding: 5px;
   margin: 5px;
   margin-right: 20px;
+  padding: 6px;
+}
+.priority-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+   display: flex;
+   margin: 2px;
 }
