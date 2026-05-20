@@ -69,6 +69,7 @@ font-size: 20px;
 overflow-wrap: break-word;
 word-break: break-word;
 align-self: center;
+margin-bottom: 0.5px;
 }
 .overdue {
 display: flex;
@@ -174,7 +175,8 @@ padding: 10px;
   text-align: center;
   padding: 5px;
   margin-left: 20px;
-  background-color: lightgreen
+  background-color: rgb(202, 224, 202);
+  margin-right: 25px;
 }
 
 .removeButton {
@@ -186,6 +188,8 @@ padding: 10px;
   margin: 5px;
   margin-right: 20px;
   padding: 6px;
+  margin-left: 25px;
+  
 }
 .priority-circle {
   width: 12px;
@@ -194,4 +198,17 @@ padding: 10px;
   display: inline-block;
    display: flex;
    margin: 2px;
+}
+.projectTitle {
+  color:rgb(139, 68, 17);
+  font-size: 18px;
+  margin: 5px 0;
+}
+.timeInfo {
+  font-size: 15px;
+  color: rgb(92, 62, 139);
+  font-weight: bold;
+}
+.addedTodo.hidden {
+  display: none;
 }

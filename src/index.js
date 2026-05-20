@@ -21,12 +21,13 @@ todoForm.addEventListener('submit', (event) => {
 const timeValue = document.getElementById('time').value;    
 const descriptionValue = document.getElementById('todo').value;
 const priorityValue = prioritySelect.options[prioritySelect.selectedIndex].value;
-
-const projectText = projectSelect.options[projectSelect.selectedIndex].text;
+const newProjectValue = document.getElementById('newProject').value.trim();
+const projectText = newProjectValue || projectSelect.options[projectSelect.selectedIndex].text;
 const descriptionInput = document.getElementById('todo');
 const descriptionError = document.getElementById('descriptionError');
+const projectList = document.getElementById('projectList');  
     
-    const todoData = {
+  const todoData = {
         day: dayValue,
         time: timeValue,
         description: descriptionValue,
@@ -73,7 +74,7 @@ projectError.textContent = '';
     updateScreen();
     todoForm.reset();
     console.log(getTodos())
-    console.log(todo.priority)
-console.log(`Priority-${todo.priority}`)
+   
+
 });
 

@@ -9,7 +9,18 @@
     
   
     <nav>
-      <div class="sortProjects">Sort Projects</div>
+      <div class="sortProjects">
+        
+        <p>Show Only Project Title:</p>
+        <button id="defaultButton">Default/All</button>
+        <div id="projectList"></div>
+        
+        <p>Show Only Priority:</p>
+        <button id="priorityLowButton">Low</button>
+        <button id="priorityMediumButton">Medium</button>    
+        <button id="priorityHighButton">High</button>
+
+      </div>
       
    <form id="todoForm">
      <h2>Add a Todo!</h2>
@@ -34,6 +45,8 @@
       <option value='skills'>Skills</option>
       <option value='important'>Important</option>
     </select>
+    <p>Or type a new project name:</p>
+    <input type="text" id="newProject" name="newProject" placeholder="New Project Name">
     <p id="projectError" class="form-error"></p>
 
 <hr>
