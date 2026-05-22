@@ -2,6 +2,7 @@ console.log('Hello');
 import './styles.css';
 import { TodoArray } from './TodoArray.js';
 import { ScreenController } from './ScreenController.js';
+import { de } from 'date-fns/locale';
 const updateScreen = () => ScreenController(getTodos, deleteTodo, updateScreen);
 const todoForm = document.getElementById('todoForm')
 const prioritySelect = document.getElementById('priority');
@@ -26,7 +27,9 @@ const projectText = newProjectValue || projectSelect.options[projectSelect.selec
 const descriptionInput = document.getElementById('todo');
 const descriptionError = document.getElementById('descriptionError');
 const projectList = document.getElementById('projectList');  
-    
+const newProjectInput = document.getElementById('newProject');
+
+
   const todoData = {
         day: dayValue,
         time: timeValue,
@@ -34,38 +37,52 @@ const projectList = document.getElementById('projectList');
         priority: priorityValue,
         project: projectText
     };
- 
+
  
 descriptionInput.addEventListener('input', () => {
   if (descriptionInput.value.trim()) {
     descriptionError.textContent = '';
+   descriptionError.classList.add('hidden');
   } 
 });
 prioritySelect.addEventListener('change', () => {
   if (prioritySelect.value) {
     priorityError.textContent = '';
+    priorityError.classList.add('hidden');
   }
 });
 projectSelect.addEventListener('change', () => {
   if (projectSelect.value) {
+    projectError.classList.add('hidden');
+    projectError.textContent = '';
+    }
+});
+newProjectInput.addEventListener('input', () => {
+  if (newProjectInput.value.trim()) {
+    projectError.classList.add('hidden');
     projectError.textContent = '';
   }
 });
-if (
-  !descriptionValue.trim() 
+
+if (!descriptionValue.trim() 
  
 ) {
+  descriptionError.classList.remove('hidden');
   descriptionError.textContent = 'Please add a description.';
+  
  return;
 }
 if (!priorityValue || priorityValue === 'Select priority') {
+  priorityError.classList.remove('hidden');
   priorityError.textContent = 'Please select a priority.';
   return;
 }
-if (!projectText|| projectText === 'Select project') {
+if (!projectText || projectText === 'Select project') {
+  projectError.classList.remove('hidden');
   projectError.textContent = 'Please select a project.';
   return;
 }
+
 descriptionError.textContent = '';
 priorityError.textContent = '';
 projectError.textContent = '';

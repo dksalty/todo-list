@@ -212,3 +212,6 @@ padding: 10px;
 .addedTodo.hidden {
   display: none;
 }
+.hidden {
+  display: none;  
+}
