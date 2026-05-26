@@ -8,20 +8,19 @@ min-height: 100vh;
 nav {
 display: flex;
 background-color: rgb(219, 206, 206);
-width: 220px;
+min-width: 15vw;
 flex-direction: column;
 align-items: center;
-
+flex-wrap: wrap;
+border-right: 5px solid rgb(145, 145, 145);
 }
 main {
 display: grid;
 grid-template-columns: repeat(5, 1fr);
 flex: 1;
-
 background-color: antiquewhite;
 }
 body {
-    
     margin: 0;
     padding: 0;
     background-color: rgb(37, 25, 8);
@@ -35,7 +34,7 @@ text-align: center;
 .day {
   font-weight: bold;
   font-size: 1.2em;
- flex-direction: column;
+ 
 
  
 }
@@ -61,7 +60,6 @@ header {
 background-color: rgb(220, 228, 230);
 text-align: center;
 border: 2px solid rgb(92, 62, 139);
-height: auto;
 width: 90%;
 max-width: 250px;
 font-weight: bold;
@@ -69,7 +67,7 @@ font-size: 20px;
 overflow-wrap: break-word;
 word-break: break-word;
 align-self: center;
-margin-bottom: 0.5px;
+margin-bottom: 2px;
 }
 .overdue {
 display: flex;
@@ -92,19 +90,20 @@ background-color: rgb(208, 238, 188);
 height: auto;
 gap: 5px;
 font-weight: bold;
-width: 98%;
-flex: 1;
+width: 100%;
+
 }
 
 #todo {
 height: 30px;
-margin: 0 10px 0 10px;
+
 }
 hr {
 height: 2px;
 width: 100%;
 background-color: rgb(145, 145, 145);
 flex-direction: column;
+margin: 0;
 }
 #submitButton {
 width: 100%;
@@ -116,7 +115,7 @@ padding: 10px;
 }
 
 .priority-high {
-  background-color: red;
+  background-color: rgb(235, 51, 51);
 }
 
 .priority-medium {
@@ -124,7 +123,7 @@ padding: 10px;
 }
 
 .priority-low {
-  background-color: green;
+  background-color: rgb(31, 156, 31);
 }
 
 .overdue-title {
@@ -148,11 +147,13 @@ padding: 10px;
 .sortProjects { 
   background-color: #CFEFE8;
   text-align: center;
-  padding: 10px;
-  width: 89%;
   font-weight: bold;
+  font-size: 18px;
   border: 2px solid rgb(145, 145, 145);
   border-bottom: none;
+  flex: 1;
+  width: 100%;
+  
 }
 #overdue {
   display: flex;
@@ -160,7 +161,7 @@ padding: 10px;
   flex: 1;
   font-size: 8px;
   font-weight: bold;
-  height: auto;
+  width: 100%;
 }
 .markCompleteColor {
   color: darkgreen;
@@ -173,29 +174,28 @@ padding: 10px;
   color: darkgreen;
   border: 2px solid green;
   text-align: center;
-  padding: 5px;
+  
   margin-left: 20px;
   background-color: rgb(202, 224, 202);
   margin-right: 25px;
+ font-size: 20px;
 }
 
 .removeButton {
   color: red;
   background-color: lightgray;
-  border: 2px solid gray;
+  border: 2px solid rgb(231, 108, 108);
   text-align: center;
-  padding: 5px;
-  margin: 5px;
   margin-right: 20px;
-  padding: 6px;
   margin-left: 25px;
-  
+  font-size: 20px;
+  margin-bottom: 1px;
 }
 .priority-circle {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  display: inline-block;
+  
    display: flex;
    margin: 2px;
 }
@@ -215,3 +215,12 @@ padding: 10px;
 .hidden {
   display: none;  
 }
+.formTitle {
+margin-bottom: 24px;
+}
+
+
+.sortTodoTitle {
+  margin: 5px;
+  padding: 0;
+} 

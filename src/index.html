@@ -6,29 +6,14 @@
 </head>
 <body>
   <div id="content">
-    
-  
-    <nav>
-      <div class="sortProjects">
-        
-        <p>Show Only Project Title:</p>
-        <button id="defaultButton">Default/All</button>
-        <div id="projectList"></div>
-        
-        <p>Show Only Priority:</p>
-        <button id="priorityLowButton">Low</button>
-        <button id="priorityMediumButton">Medium</button>    
-        <button id="priorityHighButton">High</button>
-
-      </div>
-      
-   <form id="todoForm">
-     <h2>Add a Todo!</h2>
+  <nav>
+ <form id="todoForm">
+     <h2 class="formTitle">Add a Todo!</h2>
     <hr>
-    <label for="day">When</label>
-    <input type="date" id="day">
+    <label for="day">Day:</label>
+    <input type="date" id="day" name="day">
     <hr>
-    <label for="priority">Priority</label>
+    <label for="priority">Priority:</label>
     <select name="priority" id="priority">
       <option value="" disabled selected>Select priority</option>
       <option class="priority-low" value='low'>Low</option>
@@ -37,7 +22,7 @@
     </select>
     <p id="priorityError" class="form-error hidden"></p>
     <hr>
-    <label for="project">Project</label>
+    <label for="project">Select Project:</label>
     <select name="project" id="project">
        <option value="" disabled selected>Select project</option>
       <option value='personalImprovement'>Personal Improvement</option>
@@ -45,13 +30,11 @@
       <option value='skills'>Skills</option>
       <option value='important'>Important</option>
     </select>
-    <p>Or type a new project name:</p>
+    <label for="newProject">Or create project:</label>
     <input type="text" id="newProject" name="newProject" placeholder="New Project Name">
     <p id="projectError" class="form-error hidden"></p>
-
-<hr>
-
-    <label for='todo'>What To Do</label>
+    <hr>
+    <label for='todo'>What To Do:</label>
     <input type='text' id="todo" name="todo">
     <p id="descriptionError" class="form-error hidden"></p>
     <hr>
@@ -61,7 +44,20 @@
     <button type="submit" id="submitButton">+ Add to List +</button>
   </form>
 
-  
+       <div class="sortProjects">
+        <h2 class="sortTodoTitle">Sort Todos</h2>
+          <hr>
+        <button id="defaultButton" type="button">Default/All</button>
+        <p>Show Project:</p>
+      
+        <div id="projectList"></div>
+        
+        <p>Show Priority:</p>
+        <button id="priorityLowButton" type="button">Low</button>
+        <button id="priorityMediumButton" type="button">Medium</button>    
+        <button id="priorityHighButton" type="button">High</button>
+
+      </div>
   
   </nav>
    <div class="rightContainer">
@@ -88,9 +84,7 @@
     </main>
 <div class="overdue">
   <span class="overdue-title">! Overdue !</span><hr>
-  <div id="overdue">
-    
-  </div>
+  <div id="overdue"></div>
 </div>
 </div>
   </div>

@@ -74,7 +74,7 @@ appendArray.forEach((todo) => {
     timeInfo.classList.add('timeInfo');
     const removeButton = document.createElement('button');
     removeButton.classList.add('removeButton')
-    removeButton.textContent = 'X'
+    removeButton.textContent = '🗑︎'
     const userDate = todo.day;
     const userTime = todo.time;
     const combinedString = `${userDate} ${userTime}`;
