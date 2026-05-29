@@ -3,7 +3,6 @@
 display:flex;    
 flex-direction: row;
 min-height: 100vh;
-
 }
 nav {
 display: flex;
@@ -34,8 +33,6 @@ text-align: center;
 .day {
   font-weight: bold;
   font-size: 1.2em;
- 
-
  
 }
 .dayArea {
@@ -218,9 +215,16 @@ padding: 10px;
 .formTitle {
 margin-bottom: 24px;
 }
-
-
 .sortTodoTitle {
   margin: 5px;
   padding: 0;
 } 
+.editButton {
+  color: blue;
+  background-color: lightgray;
+  border: 2px solid rgb(108, 108, 231);
+  text-align: center;
+  margin-right: 7px;
+  margin-left: 7px;
+  font-size: 19px;
+}

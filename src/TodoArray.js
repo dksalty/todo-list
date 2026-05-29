@@ -20,21 +20,17 @@ todoArray.push(formObject);
 saveToStorage();
 return formObject;
 }
-  
-const deleteTodo = (id) => {
- const filteredtodos = todoArray.filter((obj) => obj.id !== id);
+ const deleteTodo = (id) => {
+ const filteredTodos = todoArray.filter((obj) => obj.id !== id);
   todoArray.length = 0;
-  todoArray.push(...filteredtodos);
+  todoArray.push(...filteredTodos);
   saveToStorage();
 }
 const getArray = () => todoArray;
-
 
 return {
 getArray,
 createNewObject,
 deleteTodo
-
 }
-
 }

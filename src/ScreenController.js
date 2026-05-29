@@ -7,15 +7,10 @@ const comingUpDiv = document.getElementById('comingUp')
 const laterDiv = document.getElementById('later')
 const anytimeDiv = document.getElementById('anytime');
 const overdueDiv = document.getElementById('overdue');
-const sortButton = document.createElement('button');
 const today = new Date();
 const tomorrow = addDays(new Date(), 1);
-const appendArray = getTodos();
+const allTodos = getTodos();
 const nextWeek = addDays(new Date(), 7);
-const defaultButton = document.getElementById('defaultButton');
-const priorityHighButton = document.getElementById('priorityHighButton');
-const priorityMediumButton = document.getElementById('priorityMediumButton');
-const priorityLowButton = document.getElementById('priorityLowButton');
 
 todayDiv.textContent = '';
 tomorrowDiv.textContent = '';
@@ -24,45 +19,7 @@ laterDiv.textContent = '';
 anytimeDiv.textContent = '';
 overdueDiv.textContent = '';
 
-sortButton.addEventListener('click', () => {
-const allTodos = document.querySelectorAll('.addedTodo');
-allTodos.forEach(todo => {
-if (sortButton.textContent !== todo.dataset.project) {
- todo.classList.add('hidden');
-}
- else todo.classList.remove('hidden');
-})});
-
-defaultButton.addEventListener('click', () => {
-const allTodos = document.querySelectorAll('.addedTodo');
-allTodos.forEach(todo => {
-  todo.classList.remove('hidden');  
-})
-});
-
-priorityHighButton.addEventListener('click', () => {
-  const allTodos = document.querySelectorAll('.addedTodo');
-allTodos.forEach(todo => {if (todo.dataset.priority !== 'high') {
- todo.classList.add('hidden');
-}
- else todo.classList.remove('hidden');  })});
-
- priorityMediumButton.addEventListener('click', () => {
-  const allTodos = document.querySelectorAll('.addedTodo');
-  allTodos.forEach(todo => {if (todo.dataset.priority !== 'medium') {
-   todo.classList.add('hidden');
-  }
- else todo.classList.remove('hidden');  })});
-
- priorityLowButton.addEventListener('click', () => {
-  const allTodos = document.querySelectorAll('.addedTodo');
-allTodos.forEach(todo => {if (todo.dataset.priority !== 'low') {
- todo.classList.add('hidden');
-}
- else todo.classList.remove('hidden');  })});
-
-
-appendArray.forEach((todo) => {
+allTodos.forEach((todo) => {
     const newTodo = document.createElement('div');
     newTodo.classList.add('addedTodo');
     const projectTitle = document.createElement('h2');
@@ -88,56 +45,49 @@ appendArray.forEach((todo) => {
     const areYouSureButton = document.createElement('button');
     areYouSureButton.classList.add('areYouSureButton');
     areYouSureButton.textContent = 'Click here if you are sure you want to remove this todo';
-const priorityCircle = document.createElement('span');
-priorityCircle.classList.add('priority-circle');
-priorityCircle.classList.add(`priority-${todo.priority}`);
-const projectList = document.getElementById('projectList');
+    const priorityCircle = document.createElement('span');
+    priorityCircle.classList.add('priority-circle');
+    priorityCircle.classList.add(`priority-${todo.priority}`);
+    const projectList = document.getElementById('projectList');
+    const sortButton = document.createElement('button');
+    sortButton.textContent = todo.project;
+    sortButton.classList.add('sortButton');
+    const editButton = document.createElement('button');
+    editButton.classList.add('editButton');
+    editButton.textContent = '✎';
 
-sortButton.textContent = todo.project;
-sortButton.classList.add('sortButton');
-
+sortButton.addEventListener('click', () => {
+const todoCards = document.querySelectorAll('.addedTodo');
+todoCards.forEach(todo => {
+if (sortButton.textContent !== todo.dataset.project) {
+ todo.classList.add('hidden');
+}
+ else todo.classList.remove('hidden');
+})});
 const existingProjects = Array.from(projectList.children).map(button => button.textContent);
  newTodo.dataset.project = todo.project;
 newTodo.dataset.priority = todo.priority;
 if (!existingProjects.includes(todo.project)) {
   projectList.appendChild(sortButton);
 }
-
-  
 let standardResult;
-    
-if (userDate && userTime) {
-  const combinedString = `${userDate} ${userTime}`;
-  
-
+  if (userDate && userTime) {
   if (isValid(parsedDate)) {
     standardResult = format(parsedDate, 'MMMM do, yyyy @ h:mm a');
   } else {
     standardResult = 'Anytime';
   }
-} else {
-  standardResult = 'Anytime';
+}   else {
+    standardResult = 'Anytime';
 }
-
-    let timeDisplay;
-
-if (isValid(parsedDate)) {
- let timeInfo = format(parsedDate, 'MMMM do, yyyy @ h:mm a');
-} else {
-  timeDisplay = 'No date set';
-}
-
-timeInfo.textContent = timeDisplay;
-
-    projectTitle.textContent = todo.project;
+   projectTitle.textContent = todo.project;
     priorityLevel.textContent = todo.priority;
     todoInfo.textContent = todo.description;
     timeInfo.textContent = standardResult;
-    
-  
-    newTodo.append( priorityCircle, projectTitle, todoInfo, timeInfo, markCompleteButton, removeButton);
-    
-   if (isToday(parsedDate)) {
+
+   newTodo.append( priorityCircle, projectTitle, todoInfo, timeInfo, markCompleteButton, editButton, removeButton);
+
+    if (isToday(parsedDate)) {
     todayDiv.appendChild(newTodo)
    }
    else if (isTomorrow(parsedDate)) {
@@ -152,8 +102,9 @@ timeInfo.textContent = timeDisplay;
    else if (isPast(parsedDate)) {
     overdueDiv.appendChild(newTodo);
    }
-   else laterDiv.appendChild(newTodo);
-
+   else {
+    laterDiv.appendChild(newTodo);
+    }
    markCompleteButton.addEventListener('click', () => {
       if (newTodo.contains(markCompleteDiv)) {
         markCompleteDiv.remove();
@@ -165,7 +116,6 @@ timeInfo.textContent = timeDisplay;
 removeButton.addEventListener('click', () => {
   if (!newTodo.contains(areYouSureButton)) {
     newTodo.appendChild(areYouSureButton);
-
     setTimeout(() => {
       areYouSureButton.remove();
     }, 3000);
@@ -186,10 +136,7 @@ if (matchingProjects.length === 0) {
     }
   });
 }
-
-  updateScreen();
+ updateScreen();
 });
-
 });
-
 } 
