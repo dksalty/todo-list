@@ -1,3 +1,4 @@
+
 export function TodoArray () {
   const todoArray = [];
    
@@ -28,9 +29,18 @@ return formObject;
 }
 const getArray = () => todoArray;
 
+const editedDescription = (id, newDescription) => {
+  const todo = todoArray.find((obj) => obj.id === id);
+  if (todo) {
+    todo.description = newDescription;
+    saveToStorage();
+  }
+  
+};
 return {
 getArray,
 createNewObject,
-deleteTodo
+deleteTodo,
+editedDescription
 }
 }

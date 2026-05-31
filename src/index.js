@@ -2,7 +2,7 @@
 import './styles.css';
 import { TodoArray } from './TodoArray.js';
 import { ScreenController } from './ScreenController.js';
-const updateScreen = () => ScreenController(getTodos, deleteTodo, updateScreen);
+const updateScreen = () => ScreenController(getTodos, deleteTodo, updateScreen, editedDescription);
 const todoForm = document.getElementById('todoForm')
 const prioritySelect = document.getElementById('priority');
 const projectSelect = document.getElementById('project');
@@ -10,6 +10,7 @@ const todoData = TodoArray();
 const addNewObject = todoData.createNewObject;
 const getTodos = todoData.getArray;
 const deleteTodo = todoData.deleteTodo;
+const editedDescription = todoData.editedDescription;
 const priorityError = document.getElementById('priorityError');
 const projectError = document.getElementById('projectError');
 const descriptionError = document.getElementById('descriptionError');

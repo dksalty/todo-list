@@ -1,6 +1,6 @@
 import { parse, format, addDays, isToday, isTomorrow, isAfter, isBefore, isValid, isPast} from "date-fns";
 
-export function ScreenController (getTodos, deleteTodo, updateScreen) {
+export function ScreenController (getTodos, deleteTodo, updateScreen, editedDescription) {  
 const todayDiv = document.getElementById('today');
 const tomorrowDiv = document.getElementById('tomorrow')
 const comingUpDiv = document.getElementById('comingUp')
@@ -11,6 +11,7 @@ const today = new Date();
 const tomorrow = addDays(new Date(), 1);
 const allTodos = getTodos();
 const nextWeek = addDays(new Date(), 7);
+
 
 todayDiv.textContent = '';
 tomorrowDiv.textContent = '';
@@ -55,7 +56,13 @@ allTodos.forEach((todo) => {
     const editButton = document.createElement('button');
     editButton.classList.add('editButton');
     editButton.textContent = '✎';
-
+    const editDescriptionInput = document.createElement('input');
+    editDescriptionInput.classList.add('editDescriptionInput');
+    editDescriptionInput.value = todo.description;
+    const editDescriptionSubmitButton = document.createElement('button');
+    editDescriptionSubmitButton.classList.add('editDescriptionSubmitButton');
+    editDescriptionSubmitButton.textContent = 'Save';
+    
 sortButton.addEventListener('click', () => {
 const todoCards = document.querySelectorAll('.addedTodo');
 todoCards.forEach(todo => {
@@ -96,7 +103,7 @@ let standardResult;
    else if (isAfter(parsedDate, tomorrow) && isBefore(parsedDate, nextWeek)) {
    comingUpDiv.appendChild(newTodo);
    }
-   else if (timeDisplay === 'No date set') {
+   else if (standardResult === 'No date set') {
      anytimeDiv.appendChild(newTodo);
    }
    else if (isPast(parsedDate)) {
@@ -112,6 +119,41 @@ let standardResult;
       else newTodo.append(markCompleteDiv);
       markCompleteDiv.classList.add('markCompleteColor');
    });
+
+   editButton.addEventListener('click', () => {
+    if (newTodo.contains(editDescriptionInput)) {
+      editDescriptionInput.remove();
+      editDescriptionSubmitButton.remove();
+    }
+    else {
+      newTodo.append(editDescriptionInput);
+      newTodo.append(editDescriptionSubmitButton);
+    }
+   });
+editDescriptionSubmitButton.addEventListener('click', () => {
+ const newDescription = editDescriptionInput.value.trim();  
+if (newDescription) {
+ 
+  if (newTodo.contains(editDescriptionInput)) {
+    editDescriptionInput.remove();
+    editDescriptionSubmitButton.remove();
+  }
+  else {
+    newTodo.append(editDescriptionInput);
+    newTodo.append(editDescriptionSubmitButton);
+    
+  }
+  if (newDescription.trim()) {
+    editedDescription(todo.id, newDescription);
+    todoInfo.textContent = newDescription;
+  }
+ 
+  updateScreen();
+}
+updateScreen();
+}); 
+
+
 
 removeButton.addEventListener('click', () => {
   if (!newTodo.contains(areYouSureButton)) {
@@ -139,4 +181,4 @@ if (matchingProjects.length === 0) {
  updateScreen();
 });
 });
-} 
+}
