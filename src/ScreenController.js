@@ -56,7 +56,7 @@ allTodos.forEach((todo) => {
     const editButton = document.createElement('button');
     editButton.classList.add('editButton');
     editButton.textContent = '✎';
-    const editDescriptionInput = document.createElement('input');
+    const editDescriptionInput = document.createElement('textarea');
     editDescriptionInput.classList.add('editDescriptionInput');
     editDescriptionInput.value = todo.description;
     const editDescriptionSubmitButton = document.createElement('button');
