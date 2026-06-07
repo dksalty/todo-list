@@ -28,6 +28,7 @@ allTodos.forEach((todo) => {
     const priorityLevel = document.createElement('p');
     priorityLevel.textContent = todo.priority;
     const todoInfo = document.createElement('p');
+    todoInfo.classList.add('todoInfo');
     const timeInfo = document.createElement('p');
     timeInfo.classList.add('timeInfo');
     const removeButton = document.createElement('button');
@@ -62,6 +63,14 @@ allTodos.forEach((todo) => {
     const editDescriptionSubmitButton = document.createElement('button');
     editDescriptionSubmitButton.classList.add('editDescriptionSubmitButton');
     editDescriptionSubmitButton.textContent = 'Save';
+    const todoHeader = document.createElement('div');
+    todoHeader.classList.add('todoHeader');
+    todoHeader.append(priorityCircle, projectTitle);
+    const dateInfo = document.createElement('div');
+    dateInfo.textContent = format(parsedDate, 'MMMM do, yyyy');
+    const timeInfoDiv = document.createElement('div');
+    timeInfoDiv.textContent = format(parsedDate, 'h:mm a');
+    
     
 sortButton.addEventListener('click', () => {
 const todoCards = document.querySelectorAll('.addedTodo');
@@ -90,9 +99,11 @@ let standardResult;
    projectTitle.textContent = todo.project;
     priorityLevel.textContent = todo.priority;
     todoInfo.textContent = todo.description;
-    timeInfo.textContent = standardResult;
+    
 
-   newTodo.append( priorityCircle, projectTitle, todoInfo, timeInfo, markCompleteButton, editButton, removeButton);
+
+
+   newTodo.append( todoHeader, todoInfo, dateInfo, timeInfoDiv, markCompleteButton, editButton, removeButton);
 
     if (isToday(parsedDate)) {
     todayDiv.appendChild(newTodo)
@@ -103,7 +114,7 @@ let standardResult;
    else if (isAfter(parsedDate, tomorrow) && isBefore(parsedDate, nextWeek)) {
    comingUpDiv.appendChild(newTodo);
    }
-   else if (standardResult === 'No date set') {
+   else if (standardResult === 'Anytime') {
      anytimeDiv.appendChild(newTodo);
    }
    else if (isPast(parsedDate)) {

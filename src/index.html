@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Todo List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div id="content">
@@ -65,23 +66,34 @@
   <h1>Todo List</h1>
 
 </header>
+<main>
   <div class="days">
-  <h2 class="day">Today</h2>
+    <div class="daySection">
+     <h2 class="day">Today</h2>
+     <div id="today" class="dayArea"></div>
+    </div>
+    <div class="daySection">
   <h2 class="day">Tomorrow</h2>
+  <div id="tomorrow" class="dayArea"></div>
+    </div>
+    <div class="daySection">
   <h2 class="day">Coming Up</h2>
+  <div id="comingUp" class="dayArea"></div>
+    </div>
+    <div class="daySection">
   <h2 class="day">Later</h2>
+  <div id="later" class="dayArea"></div>
+    </div>
+    <div class="daySection">
   <h2 class="day">Anytime</h2>
+  <div id="anytime" class="dayArea"></div>
+    </div>
 </div>
-<div class="verticalContainer">
-  <main>
+</main>
   
-      <div id="today" class="dayArea"></div>
-      <div id="tomorrow" class="dayArea"></div>
-      <div id="comingUp" class="dayArea"></div>
-      <div id="later" class="dayArea"></div>
-      <div id="anytime" class="dayArea"></div>
-      
-    </main>
+  
+   
+
 <div class="overdue">
   <span class="overdue-title">! Overdue !</span><hr>
   <div id="overdue"></div>
