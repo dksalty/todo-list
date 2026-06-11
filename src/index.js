@@ -2,7 +2,7 @@
 import './styles.css';
 import { TodoArray } from './TodoArray.js';
 import { ScreenController } from './ScreenController.js';
-const updateScreen = () => ScreenController(getTodos, deleteTodo, updateScreen, editedDescription);
+const updateScreen = () => ScreenController(getTodos, deleteTodo, updateScreen, editedDescription, toggleComplete);
 const todoForm = document.getElementById('todoForm')
 const prioritySelect = document.getElementById('priority');
 const projectSelect = document.getElementById('project');
@@ -11,6 +11,7 @@ const addNewObject = todoData.createNewObject;
 const getTodos = todoData.getArray;
 const deleteTodo = todoData.deleteTodo;
 const editedDescription = todoData.editedDescription;
+const toggleComplete = todoData.toggleComplete;
 const priorityError = document.getElementById('priorityError');
 const projectError = document.getElementById('projectError');
 const descriptionError = document.getElementById('descriptionError');
@@ -34,7 +35,8 @@ const todoValues = {
         time: timeValue,
         description: descriptionValue,
         priority: priorityValue,
-        project: projectText
+        project: projectText,
+        completed: false
     };
 if (!descriptionValue.trim()) {
   descriptionError.classList.remove('hidden');

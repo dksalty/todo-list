@@ -28,19 +28,26 @@ return formObject;
   saveToStorage();
 }
 const getArray = () => todoArray;
-
 const editedDescription = (id, newDescription) => {
   const todo = todoArray.find((obj) => obj.id === id);
   if (todo) {
     todo.description = newDescription;
     saveToStorage();
   }
-  
+};
+
+const toggleComplete = (id) => {
+  const todo = todoArray.find((obj) => obj.id === id);
+  if (todo) {
+    todo.completed = !todo.completed;
+    saveToStorage();
+  }
 };
 return {
 getArray,
 createNewObject,
 deleteTodo,
-editedDescription
+editedDescription,
+toggleComplete
 }
 }

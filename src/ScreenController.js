@@ -1,6 +1,6 @@
 import { parse, format, addDays, isToday, isTomorrow, isAfter, isBefore, isValid, isPast} from "date-fns";
 
-export function ScreenController (getTodos, deleteTodo, updateScreen, editedDescription) {  
+export function ScreenController (getTodos, deleteTodo, updateScreen, editedDescription, toggleComplete) {  
 const todayDiv = document.getElementById('today');
 const tomorrowDiv = document.getElementById('tomorrow')
 const comingUpDiv = document.getElementById('comingUp')
@@ -11,7 +11,6 @@ const today = new Date();
 const tomorrow = addDays(new Date(), 1);
 const allTodos = getTodos();
 const nextWeek = addDays(new Date(), 7);
-
 
 todayDiv.textContent = '';
 tomorrowDiv.textContent = '';
@@ -67,11 +66,12 @@ allTodos.forEach((todo) => {
     todoHeader.classList.add('todoHeader');
     todoHeader.append(priorityCircle, projectTitle);
     const dateInfo = document.createElement('div');
+    dateInfo.classList.add('dateInfo');
     dateInfo.textContent = format(parsedDate, 'MMMM do, yyyy');
     const timeInfoDiv = document.createElement('div');
+    timeInfoDiv.classList.add('timeInfoDiv');
     timeInfoDiv.textContent = format(parsedDate, 'h:mm a');
-    
-    
+
 sortButton.addEventListener('click', () => {
 const todoCards = document.querySelectorAll('.addedTodo');
 todoCards.forEach(todo => {
@@ -96,15 +96,12 @@ let standardResult;
 }   else {
     standardResult = 'Anytime';
 }
-   projectTitle.textContent = todo.project;
+    projectTitle.textContent = todo.project;
     priorityLevel.textContent = todo.priority;
     todoInfo.textContent = todo.description;
-    
-
-
-
-   newTodo.append( todoHeader, todoInfo, dateInfo, timeInfoDiv, markCompleteButton, editButton, removeButton);
-
+   
+    newTodo.append( todoHeader, todoInfo, dateInfo, timeInfoDiv, markCompleteButton, editButton, removeButton);
+   
     if (isToday(parsedDate)) {
     todayDiv.appendChild(newTodo)
    }
@@ -124,14 +121,20 @@ let standardResult;
     laterDiv.appendChild(newTodo);
     }
    markCompleteButton.addEventListener('click', () => {
-      if (newTodo.contains(markCompleteDiv)) {
-        markCompleteDiv.remove();
-      }
-      else newTodo.append(markCompleteDiv);
-      markCompleteDiv.classList.add('markCompleteColor');
+toggleComplete(todo.id);
+updateScreen();
+  
    });
+    
+   if (todo.completed) {
+    newTodo.appendChild(markCompleteDiv);
+   }
 
-   editButton.addEventListener('click', () => {
+      
+       
+   
+
+ editButton.addEventListener('click', () => {
     if (newTodo.contains(editDescriptionInput)) {
       editDescriptionInput.remove();
       editDescriptionSubmitButton.remove();
@@ -144,7 +147,6 @@ let standardResult;
 editDescriptionSubmitButton.addEventListener('click', () => {
  const newDescription = editDescriptionInput.value.trim();  
 if (newDescription) {
- 
   if (newTodo.contains(editDescriptionInput)) {
     editDescriptionInput.remove();
     editDescriptionSubmitButton.remove();
@@ -152,20 +154,15 @@ if (newDescription) {
   else {
     newTodo.append(editDescriptionInput);
     newTodo.append(editDescriptionSubmitButton);
-    
   }
   if (newDescription.trim()) {
     editedDescription(todo.id, newDescription);
     todoInfo.textContent = newDescription;
   }
- 
-  updateScreen();
+updateScreen();
 }
 updateScreen();
 }); 
-
-
-
 removeButton.addEventListener('click', () => {
   if (!newTodo.contains(areYouSureButton)) {
     newTodo.appendChild(areYouSureButton);
@@ -173,14 +170,12 @@ removeButton.addEventListener('click', () => {
       areYouSureButton.remove();
     }, 3000);
   }
- 
 });
 areYouSureButton.addEventListener('click', () => {
   deleteTodo(todo.id);
      const matchingProjects = getTodos().filter(
   item => item.project === todo.project
 );
-
 if (matchingProjects.length === 0) {
   const projectButtons = Array.from(projectList.children);
   projectButtons.forEach(button => {
